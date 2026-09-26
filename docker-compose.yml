@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    image: lab1-psis:latest
+    container_name: lab1-psis
+    ports:
+      - "8080:80"
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped

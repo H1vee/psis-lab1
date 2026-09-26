@@ -1,0 +1,315 @@
+:root {
+  --paper: #f1f3ee;
+  --surface: #ffffff;
+  --ink: #1c2420;
+  --ink-muted: #5a6560;
+  --rule: #cbd2ca;
+  --accent: #2f6b4f;
+  --accent-tint: #dde9e0;
+  --measure: 66ch;
+  --gap: clamp(1.25rem, 3vw, 2.5rem);
+  --font-display: "Iowan Old Style", Charter, Georgia, "Times New Roman", serif;
+  --font-text: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p,
+li,
+dd {
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.shell {
+  width: min(100% - 2 * var(--gap), 76ch);
+  margin-inline: auto;
+}
+
+.masthead {
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--rule);
+}
+
+.masthead__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  padding-block: 1rem;
+}
+
+.masthead__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin-inline-start: auto;
+  padding: 0;
+  list-style: none;
+}
+
+.nav a {
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--gap);
+  padding-block: clamp(2.5rem, 8vw, 5rem) clamp(2rem, 5vw, 3rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero__lead {
+  font-size: 1.2rem;
+  color: var(--ink-muted);
+  margin-bottom: 0;
+}
+
+.dial {
+  display: grid;
+  place-content: center;
+  gap: 0.2rem;
+  width: 9.5rem;
+  height: 9.5rem;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background-color: var(--accent-tint);
+  color: var(--accent);
+  font-family: var(--font-display);
+  text-align: center;
+}
+
+.dial__value {
+  font-size: 2.1rem;
+  line-height: 1;
+}
+
+.dial__caption {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.section {
+  padding-block: clamp(2rem, 5vw, 3rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+.section:last-of-type {
+  border-bottom: 0;
+}
+
+.glossary {
+  margin: 0;
+}
+
+.glossary div {
+  padding-inline-start: 1rem;
+  border-inline-start: 3px solid var(--accent-tint);
+  margin-block: 1.25rem;
+}
+
+.glossary dt {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.glossary dd {
+  margin: 0.15rem 0 0;
+  color: var(--ink-muted);
+}
+
+.steps {
+  counter-reset: step;
+  padding: 0;
+  list-style: none;
+}
+
+.steps > li {
+  counter-increment: step;
+  position: relative;
+  padding-inline-start: 3.25rem;
+  margin-block: 2rem;
+  max-width: none;
+}
+
+.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  inset-inline-start: 0;
+  top: -0.35rem;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--accent);
+}
+
+.steps p {
+  margin: 0.25rem 0 0;
+  color: var(--ink-muted);
+}
+
+.chain {
+  padding: 0;
+  margin: 1.5rem 0;
+  list-style: none;
+}
+
+.chain li {
+  padding: 0.75rem 1rem;
+  background-color: var(--surface);
+  border: 1px solid var(--rule);
+  max-width: var(--measure);
+}
+
+.chain li + li {
+  margin-top: 1.5rem;
+  position: relative;
+}
+
+.chain li + li::before {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  inset-inline-start: 1.75rem;
+  width: 1px;
+  height: 1.5rem;
+  background-color: var(--accent);
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+caption {
+  text-align: start;
+  color: var(--ink-muted);
+  padding-bottom: 0.5rem;
+}
+
+th,
+td {
+  text-align: start;
+  vertical-align: top;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+th {
+  font-family: var(--font-display);
+  white-space: nowrap;
+}
+
+.faq {
+  max-width: var(--measure);
+}
+
+.faq details {
+  padding-block: 0.9rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.faq summary {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.faq p {
+  color: var(--ink-muted);
+  margin-bottom: 0;
+}
+
+.colophon {
+  padding-block: 2rem 3rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  border-top: 1px solid var(--rule);
+}
+
+@media (max-width: 40rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dial {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .dial__value {
+    font-size: 1.6rem;
+  }
+}
